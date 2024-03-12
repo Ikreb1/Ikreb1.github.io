@@ -2,8 +2,9 @@ let videoStream;
 
 function startVideo() {
     const video = document.getElementById('videoElement');
+    video.muted = true; // Ensure video is muted to avoid autoplay issues
     if (navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
+        navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }) // Prefer the front camera on mobile devices
             .then(function(stream) {
                 video.srcObject = stream;
                 videoStream = stream;

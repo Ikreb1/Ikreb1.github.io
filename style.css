@@ -14,3 +14,19 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+video#videoElement {
+    max-width: 100%;
+    height: auto; /* Preserve aspect ratio */
+}
+
+/* Adjusting layout for smaller devices */
+@media (max-width: 768px) {
+    video#videoElement, canvas#canvas {
+        max-height: 400px; /* Adjust based on your needs */
+    }
+    button {
+        width: 100%;
+        font-size: 18px; /* Larger font for better visibility on small screens */
+    }
+}

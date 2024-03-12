@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Camera App</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <video id="video" playsinline autoplay></video>
+    <button id="snap">Take Photo</button>
+    <canvas id="canvas" style="display:none;"></canvas>
+    <div id="popup" style="display:none;">
+        <button id="send">Send Photo</button>
+        <button id="retry">Retry</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
