@@ -1,15 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My GitHub Page</title>
+    <title>Camera App</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <video id="videoElement" autoplay></video>
-    <button onclick="takePhoto()">Take Photo</button>
-    <button onclick="downloadPhoto()">Download Photo</button>
-    <button onclick="retakePhoto()">Reset</button>
+    <video id="video" playsinline autoplay></video>
+    <button id="snap">Take Photo</button>
     <canvas id="canvas" style="display:none;"></canvas>
+    <div id="countdown" style="position: absolute; font-size: 48px; color: white;"></div>
+    <div id="popup" style="display:none;">
+        <button id="send">Send Photo</button>
+        <button id="retry">Retry</button>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

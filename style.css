@@ -1,32 +1,18 @@
-body {
-    font-family: Arial, sans-serif;
-}
-
-button {
-    background-color: #4CAF50;
-    color: white;
-    padding: 15px 20px;
-    margin: 10px 0;
-    border: none;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #45a049;
-}
-
-video#videoElement {
-    max-width: 100%;
-    height: auto; /* Preserve aspect ratio */
-}
-
-/* Adjusting layout for smaller devices */
-@media (max-width: 768px) {
-    video#videoElement, canvas#canvas {
-        max-height: 400px; /* Adjust based on your needs */
-    }
-    button {
-        width: 100%;
-        font-size: 18px; /* Larger font for better visibility on small screens */
-    }
-}
+/* style.css */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  #video, #canvas {
+    border: 1px solid black;
+  }
+  
+  #popup {
+    margin-top: 20px;
+  }
+  
