@@ -5,13 +5,17 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <video id="video" playsinline autoplay></video>
-    <button id="snap">Take Photo</button>
-    <canvas id="canvas" style="display:none;"></canvas>
-    <div id="countdown" style="position: absolute; font-size: 48px; color: white;"></div>
-    <div id="popup" style="display:none;">
-        <button id="send">Send Photo</button>
-        <button id="retry">Retry</button>
+    <div id="camera-container">
+        <video id="video" playsinline autoplay></video>
+        <canvas id="canvas"></canvas>
+        <div id="overlay">
+            <button id="snap" class="button" role="button">Take Photo</button>
+            <div id="popup" style="display:none;">
+                <button id="send" class="button" role="button">Send Photo</button>
+                <button id="retry" class="button" role="button">Retry</button>
+            </div>
+        </div>
+        <div id="countdown"></div>
     </div>
     <script src="script.js"></script>
 </body>

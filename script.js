@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function() {
     var send = document.getElementById('send');
     var retry = document.getElementById('retry');
 
+    canvas.style.display = 'none'; // Hide the canvas
+
     // Get access to the camera
     if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
         navigator.mediaDevices.getUserMedia({ video: { facingMode: "user" } }).then(function(stream) {
