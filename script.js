@@ -17,18 +17,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     snap.addEventListener("click", function() {
-        snap.disabled = true; // Disable button to prevent multiple clicks
-        setTimeout(function() { // 3 second countdown
-            canvas.width = video.videoWidth;
-            canvas.height = video.videoHeight;
-            context.drawImage(video, 0, 0, canvas.width, canvas.height);
-            video.style.display = 'none'; // Hide the video element
-            canvas.style.display = 'block'; // Show the canvas
-            applyOverlay(); // Apply your overlay
-            popup.style.display = 'flex'; // Show popup
-            snap.disabled = false; // Enable button again
-        }, 3000);
+        snap.disabled = true; // Disable the button to prevent multiple clicks
+    
+        let countdownNumber = 3;
+        document.getElementById('countdown').innerText = countdownNumber; // Display initial countdown number
+    
+        // Update the countdown every second
+        var countdownInterval = setInterval(function() {
+            countdownNumber--;
+            if(countdownNumber > 0) {
+                document.getElementById('countdown').innerText = countdownNumber;
+            } else {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerText = ''; // Clear the countdown
+                capturePhotoAndOverlay(); // Call the function to capture the photo and apply the overlay
+            }
+        }, 1000);
     });
+
+    
+    function capturePhotoAndOverlay() { // 3 second countdown
+        snap.style.display = 'none'; // Hide the button
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
+        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+        video.style.display = 'none'; // Hide the video element
+        canvas.style.display = 'block'; // Show the canvas
+        applyOverlay(); // Apply your overlay
+        popup.style.display = 'flex'; // Show popup
+        snap.disabled = false; // Enable button again
+    };
 
     function applyOverlay() {
         var overlayImg = new Image();
@@ -64,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Retry photo
     retry.addEventListener("click", function() {
+        snap.style.display = 'block';
         video.style.display = 'block';
         canvas.style.display = 'none';
         popup.style.display = 'none';
