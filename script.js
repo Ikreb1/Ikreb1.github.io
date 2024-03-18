@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var popup = document.getElementById('popup');
     var send = document.getElementById('send');
     var retry = document.getElementById('retry');
+    var photo = document.getElementById('photo');
 
     canvas.style.display = 'none'; // Hide the canvas
 
@@ -23,6 +24,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         let countdownNumber = 3;
         document.getElementById('countdown').innerText = countdownNumber; // Display initial countdown number
+
+        photo.style.display = 'flex'; // Hide the photo
     
         // Update the countdown every second
         var countdownInterval = setInterval(function() {
@@ -39,6 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     
     function capturePhotoAndOverlay() { // 3 second countdown
+        photo.style.display = 'none'; // Hide the photo
         snap.style.display = 'none'; // Hide the button
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
@@ -75,11 +79,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Send photo logic
     send.addEventListener("click", function() {
-        // Implement the logic to convert canvas to an image and send it via email
-        // This might involve converting the canvas to a data URL and sending it to a server
-        // need to have a server running
-
-        // TODO: the server can have a copy of the image and do the processing itself as I know how to do it in python
+        // TODO: send which random filter was applied with
+        var canvas = document.getElementById('canvas');
+        var imageData = canvas.toDataURL('image/png');
+        var email = "recipient_email@example.com"; // Set the recipient email address here
+    
+        fetch('http://localhost:5000/send', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({image: imageData, email: email}),
+        })
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
 
     // Retry photo
