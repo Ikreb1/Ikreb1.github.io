@@ -74,6 +74,7 @@ document.addEventListener('DOMContentLoaded', function() {
             popup.style.display = 'flex';
         };
         // Set the source of the overlay image
+        overlayImg.crossOrigin = "anonymous";
         overlayImg.src = './hat.png';
     }
 
