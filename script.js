@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var send = document.getElementById('send');
     var retry = document.getElementById('retry');
     var photo = document.getElementById('photo');
+    var emailInput = document.getElementById('emailInput');
 
     canvas.style.display = 'none'; // Hide the canvas
 
@@ -83,8 +84,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // TODO: send which random filter was applied with
         var canvas = document.getElementById('canvas');
         var imageData = canvas.toDataURL('image/png');
-        var email = "recipient_email@example.com"; // Set the recipient email address here
-    
+        var email = emailInput.value;
+
+        // Check if the email input is not empty
+        if (email.trim() === '') {
+            alert('Please enter an email address.');
+            return;
+        }
+
         fetch('http://localhost:5000/send', {
             method: 'POST',
             headers: {
