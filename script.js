@@ -99,11 +99,23 @@ document.addEventListener('DOMContentLoaded', function() {
             },
             body: JSON.stringify({image: imageData, email: email}),
         })
-        .then(response => response.json())
-        .then(data => console.log(data))
+        .then(response => {
+            if (response.status === 200) {
+                console.log("Email sent successfully");
+                return response.json();
+            } else {
+                console.log("Response not 200", response.status);
+                throw new Error('Server responded with a non-200 status');
+            }
+        })
+        .then(data => {
+            console.log(data);
+            document.getElementById('retry').click();
+        })
         .catch((error) => {
             console.error('Error:', error);
         });
+
     });
 
     // Retry photo
