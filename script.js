@@ -119,6 +119,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // This will now log the specific server error message
             console.error('Error:', error.message);
         });
+    });
 
     // Retry photo
     retry.addEventListener("click", function() {
