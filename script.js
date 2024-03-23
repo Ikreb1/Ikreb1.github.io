@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('http://13.49.159.85:5000/send', {
+        fetch('https://melkorka.applikuapp.com/send', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
