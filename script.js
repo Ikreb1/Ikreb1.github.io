@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        fetch('http://localhost:5000/send', {
+        fetch('http://13.49.159.85:5000/send', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -105,7 +105,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 return response.json();
             } else {
                 console.log("Response not 200", response.status);
-                throw new Error('Server responded with a non-200 status');
+                // Extract the error message from the server's response
+                return response.json().then(err => {
+                    throw new Error(`Server responded with a non-200 status: ${response.status} - ${err.error}`);
+                });
             }
         })
         .then(data => {
@@ -113,10 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('retry').click();
         })
         .catch((error) => {
-            console.error('Error:', error);
+            // This will now log the specific server error message
+            console.error('Error:', error.message);
         });
-
-    });
 
     // Retry photo
     retry.addEventListener("click", function() {
