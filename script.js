@@ -94,7 +94,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
         fetch('https://melkorka.applikuapp.com/send', {
             method: 'POST',
-            mode: 'no-cors',
             headers: {
                 'Content-Type': 'application/json',
             },
