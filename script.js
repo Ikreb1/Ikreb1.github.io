@@ -76,7 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         // Set the source of the overlay image
         overlayImg.crossOrigin = "anonymous";
-        overlayImg.src = './hat.png';
+        // random hat1 or hat2
+        if (Math.random() < 0.5) {
+            overlayImg.src = './hat1.png';
+        } else {
+            overlayImg.src = './hat2.png';
+        }
     }
 
     // Send photo logic
