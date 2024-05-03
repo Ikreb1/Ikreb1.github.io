@@ -91,6 +91,16 @@ document.addEventListener('DOMContentLoaded', function() {
         var imageData = canvas.toDataURL('image/png');
         var email = emailInput.value;
 
+        var downloadLink = document.createElement('a');
+        downloadLink.href = imageData;
+        downloadLink.download = 'ljosmynd.png';
+
+        // Append the link to the body (this is temporary and doesn't need to be visible)
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        document.body.removeChild(downloadLink);
+        return;
+
         // Check if the email input is not empty
         if (email.trim() === '') {
             alert('Please enter an email address.');
