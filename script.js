@@ -89,7 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // TODO: send which random filter was applied with
         var canvas = document.getElementById('canvas');
         var imageData = canvas.toDataURL('image/png');
-        var email = emailInput.value;
 
         var downloadLink = document.createElement('a');
         downloadLink.href = imageData;
@@ -100,6 +99,8 @@ document.addEventListener('DOMContentLoaded', function() {
         downloadLink.click();
         document.body.removeChild(downloadLink);
         return;
+
+        var email = emailInput.value;
 
         // Check if the email input is not empty
         if (email.trim() === '') {
